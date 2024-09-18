@@ -1,0 +1,111 @@
+.App {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.Dashboard {
+  width: 600px;
+  height: 800px;
+  background-color: aliceblue;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Post-list {
+  margin-top: 20px;
+  border-radius: 8px;
+  height: 650px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px goldenrod solid;
+  overflow: scroll;
+}
+
+.Blog-post {
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  margin: 20px;
+  margin: 6px;
+  align-items: flex-start;
+  border-bottom: 1px saddlebrown dashed;
+}
+.Blog-post .Content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  text-align: justify;
+}
+.Blog-post-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.Blog-post-title .Name {
+  font-size: larger;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+.Blog-post-title .Author {
+  font-size: small;
+  font-style: italic;
+}
+.Login {
+  margin-left: auto;
+  margin-top: 8px;
+}
+.Post-detail {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+.Post-detail .Full-content {
+  margin-top: 8px;
+  padding-top: 12px;
+  padding-left: 8px;
+}
+.Post-detail .Textarea {
+  width: 90%;
+  min-height: 500px;
+  text-align: justify;
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

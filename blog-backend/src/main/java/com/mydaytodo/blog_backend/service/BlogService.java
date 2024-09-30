@@ -8,40 +8,49 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @Slf4j
 public class BlogService {
 
     @Autowired
     private BlogRepository blogRepository;
+
     public BlogService(BlogRepository blogRepository) {
         this.blogRepository = blogRepository;
     }
-    public Mono<BlogPost> createNewPost(BlogPost blogPost) {
+    public BlogPost createNewPost(BlogPost blogPost) {
+        blogPost.setDatePublished(new Date());
         return blogRepository.save(blogPost);
     }
 
-    public Mono<BlogPost> getBlogPostBy(String id) {
-        return blogRepository.findById(id);
+    public BlogPost getBlogPostBy(String id) {
+        return blogRepository.findById(id).orElseThrow();
     }
 
-    public Flux<BlogPost> findAll(){
+    public List<BlogPost> findAll(){
         return blogRepository.findAll();
     }
-    public Flux<BlogPost> getPostsByUser(String username) {
-        return blogRepository.findByUsername(username);
+    public List<BlogPost> getPostsByUser(String username) {
+        return blogRepository.findPostsByUser(username);
     }
 
-    public Mono<Void> deletePost(String id) {
-        return blogRepository.deleteById(id);
+    public void deletePost(String id) {
+        blogRepository.deleteById(id);
     }
-    public Mono<BlogPost> updatePost(String id, BlogPost body) {
-        return blogRepository.findById(id)
-                .flatMap(currentPost -> {
-                    currentPost.setTitle(body.getTitle());
-                    currentPost.setContent(body.getContent());
-                   return blogRepository.save(currentPost);
-                });
+
+    public BlogPost updatePost(String id, BlogPost body) {
+        BlogPost post = blogRepository.findById(id).orElseThrow();
+        if(body.getContent() != null) {
+            post.setContent(body.getContent());
+        }
+        if(body.getTitle() != null) {
+            post.setTitle(body.getTitle());
+        }
+        return blogRepository.save(post);
     }
 }
 

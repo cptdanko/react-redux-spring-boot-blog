@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "f5f443e3-f1f2-4483-a9d0-66a0289a3079",
+		"name": "React Blog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "595931"
+	},
+	"item": [
+		{
+			"name": "Add mock posts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/blog/addMockPosts"
+			},
+			"response": []
+		},
+		{
+			"name": "Get post",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/blog/post/1"
+			},
+			"response": []
+		},
+		{
+			"name": "All posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/blog/post/"
+			},
+			"response": []
+		},
+		{
+			"name": "Posts by user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/blog/post/by/bhuman@mydaytodo.com"
+			},
+			"response": []
+		},
+		{
+			"name": "Create post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Post 3.0\",\n    \"content\" : \"Another new announcement by B - the - man - danko\",\n    \"username\": \"bhuman@mydaytodo.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/blog/post"
+			},
+			"response": []
+		},
+		{
+			"name": "Update post",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"content\": \"Yay updating the post man, creating a totally new update\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/blog/post/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete post",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Even newer post\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/blog/post/1"
+			},
+			"response": []
+		}
+	]
+}

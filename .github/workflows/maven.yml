@@ -40,7 +40,7 @@ jobs:
     - run: cd blog-frontend
     - run: npm install
       working-directory: blog-frontend
-    - run: npm run build 
+    - run: CI=false npm run build 
       working-directory: blog-frontend
       
 

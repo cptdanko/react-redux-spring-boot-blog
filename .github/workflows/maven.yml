@@ -28,8 +28,10 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
-      working-directory: ./blog.backend
+      run: mvn -B package --file blog-backend/pom.xml
+      
+    - name: change dir
+      run: cd blog-backend/
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph

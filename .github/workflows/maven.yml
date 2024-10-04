@@ -37,7 +37,7 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-    - run: cd blog-frontend
+
     - run: npm install
       working-directory: blog-frontend
     - run: CI=false npm run build 

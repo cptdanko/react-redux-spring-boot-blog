@@ -2,7 +2,7 @@
 
 A blogging platform built using reactjs for frontend and spring boot for the backend.
 
-Have a read of the two blogposts written to support this repository
+Have a read of the blogposts written to support this repository.
 
 **https://mydaytodo.com/build-blog-engine-with-react-spring-boot-1/**
 

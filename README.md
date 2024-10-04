@@ -8,6 +8,8 @@ Have a read of the two blogposts written to support this repository
 
 **https://mydaytodo.com/build-blog-engine-with-react-spring-boot-2/**
 
+**https://mydaytodo.com/github-actions-java-spring-boot/**
+
 ## Tutorials
 
 Have a read of some of the tutorials with code samples on my blog,

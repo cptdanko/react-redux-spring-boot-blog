@@ -6,8 +6,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ViewPost } from './components/ViewPost';
 import Navbar from './Navbar';
 import { Home } from './components/Home';
+import { loadPosts } from './store';
 
 function App() {
+  loadPosts();
+  
   return (
     <div className="App" style={{ backgroundColor: 'beige' }}>
       <div className='Dashboard'>

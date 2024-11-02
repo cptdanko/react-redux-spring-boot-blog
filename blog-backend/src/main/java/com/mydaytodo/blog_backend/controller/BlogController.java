@@ -38,7 +38,7 @@ public class BlogController {
         return blogService.getBlogPostBy(id); // to be completed later
     }
 
-    @GetMapping("/post/")
+    @GetMapping("/post")
     @ResponseStatus(HttpStatus.OK)
     public List<BlogPost> getAllPosts() {
         return blogService.findAll(); // to be completed later

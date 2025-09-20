@@ -5,15 +5,25 @@ import { useEffect } from "react";
 import { loadPosts } from "../store";
 
 export const BlogPosts = () => {
-    let blogposts = useSelector(state => state.posts);
+    const blogposts = useSelector(state => state.posts);
     const dispatch = useDispatch();
+
+    // load posts once
     useEffect(() => {
-        loadPosts();
-    });
-    
-    const deletePost = (id) => {
-        dispatch({ type: "DELETE_POST", payload: id });
-    }
+        (async () => {
+            const resp = await fetch("/api/blog/post");
+            const posts = await resp.json();
+            dispatch({ type: "SET_POSTS", payload: posts });
+        })();
+    }, [dispatch]);
+
+    // delete handler does the fetch first, then dispatches
+    const handleDelete = async (id) => {
+        const res = await fetch(`/api/blog/post/${id}`, { method: "DELETE" });
+        if (res.ok) {
+            dispatch({ type: "DELETE_POST", payload: id });
+        }
+    };
     return (
         <div id="postList" className='Post-list'>
             {blogposts.map(post => {
@@ -35,7 +45,7 @@ export const BlogPosts = () => {
                                     Edit Post
                                 </Link>
                             </button>
-                            <button onClick={() => deletePost(post.id)}>Delete</button>
+                           <button onClick={() => handleDelete(post.id)}>Delete</button>
                         </div>
                     </div>
                 )

@@ -16,34 +16,27 @@ export async function deletePost(id) {
         method: "DELETE"
     });
 }
-export const postsReducer = (state = initialState, action) => {
-    switch(action.type) {
-        case "ADD_POST":
-            return {...state, posts: [...state.posts, action.payload]};
-        case 'DELETE_POST':
-            deletePost(action.payload).then(res => {
-                if(res.ok) {
-                    loadPosts();
-                    const modifiedList = state.posts.filter(post => post.id !== action.payload);
-                    return {...state,posts: [...modifiedList]};
-                }
-            });
-        case 'UPDATE_POST':
-            // payload to have new content and id
-            // updated date will be modified here
-            console.log("About to update posts");
-            const {content, id} = action.payload;
-            state.posts.forEach(p => {
-                if(p.id === Math.abs(id)) {
-                    p.content = content;
-                }
-            })
-            return {...state, posts: [...state.posts]};
-        default:
-            return state;
-            
-    }
 
-}
+export const postsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "SET_POSTS":
+      return { ...state, posts: action.payload };
+    case "ADD_POST":
+      return { ...state, posts: [...state.posts, action.payload] };
+    case "DELETE_POST":
+      // just synchronously remove from state
+      return { ...state, posts: state.posts.filter(p => p.id !== action.payload) };
+    case "UPDATE_POST":
+      return {
+        ...state,
+        posts: state.posts.map(p =>
+          p.id === action.payload.id ? { ...p, content: action.payload.content } : p
+        )
+      };
+    default:
+      return state;
+  }
+};
+
 const store = createStore(postsReducer);
 export default store;
